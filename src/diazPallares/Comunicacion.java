@@ -9,12 +9,13 @@ public class Comunicacion {
 	private Serial puerto;
 	public Boolean enviar, crearNuevo;
 	private PApplet app;
-	private int pesas[];
+	private String pesas[];
 	public Comunicacion(PApplet app){
 		this.app = app;
-		pesas = new int[6];
+		pesas = new String[7];
 		String nombrePuerto = Serial.list()[1];
 		puerto = new Serial(this.app, nombrePuerto, 9600);
+		crearNuevo = false;
 	}
 	public void leer(){
 		if(puerto.available() > 0){
@@ -27,9 +28,9 @@ public class Comunicacion {
 				}
 				if(mensaje.startsWith("pesas")){
 					String[] partes = PApplet.split(mensaje, " ");
-					//System.out.println(Arrays.toString(partes));
+					//System.out.println(Arrays.toString(pesas));
 					for(int i=0; i< partes.length-1; i++){
-						pesas[i] = Integer.parseInt(partes[i+1]);
+						pesas[i] = partes[i+1];
 					}
 					System.out.println("Pesas" + Arrays.toString(pesas));					
 				}
@@ -39,7 +40,7 @@ public class Comunicacion {
 	}
 	public void enviar(String s){
 		puerto.write(s+"\n");
-		app.delay(5000);
+		app.delay(500);
 	}
 	public Boolean getCrearNuevo(){
 		return crearNuevo;
@@ -47,7 +48,7 @@ public class Comunicacion {
 	public void setCrearNuevo(Boolean b){
 		crearNuevo = b;
 	}
-	public int[]getPesas(){
+	public String[]getPesas(){
 		return pesas;		
 	}
 }
