@@ -1,12 +1,11 @@
 package diazPallares;
 
-import java.util.Arrays;
-
 import processing.core.PApplet;
 
 public class Logica {
 	private PApplet app;
 	private Comunicacion com;
+	private Interfaz interfaz;
 	private Alimento arroz;
 	private String pesas[];
 	private String guardar[];
@@ -15,6 +14,7 @@ public class Logica {
 		app = p;
 		usuario = 0;
 		com = new Comunicacion(app);
+		interfaz = new Interfaz(app);
 		arroz = new Alimento(1);
 		pesas = new String[7];
 		guardar = new String[16];
@@ -23,9 +23,11 @@ public class Logica {
 	public void draw() {
 		com.leer();
 		pesas=com.getPesas();
+		//app.delay(1000);
 		//System.out.println("Pesas" + Arrays.toString(pesas));
 		arroz.Ejecutar(pesas[0]);
 		guardaInfo();
+		interfaz.Ejecutar(pesas);
 		//System.out.println("Pesas" + Arrays.toString(pesas));
 	}
 	public void guardaInfo(){
