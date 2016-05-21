@@ -7,7 +7,7 @@ import processing.serial.Serial;
 
 public class Comunicacion {
 	private Serial puerto;
-	public Boolean enviar, crearNuevo;
+	public Boolean enviar, crearNuevo, nuevoPeso;
 	private PApplet app;
 	private String pesas[];
 	public Comunicacion(PApplet app){
@@ -16,6 +16,7 @@ public class Comunicacion {
 		String nombrePuerto = Serial.list()[1];
 		puerto = new Serial(this.app, nombrePuerto, 9600);
 		crearNuevo = false;
+		nuevoPeso = false;
 	}
 	public void leer(){
 		if(puerto.available() > 0){
@@ -34,6 +35,10 @@ public class Comunicacion {
 					}
 					System.out.println("Pesas" + Arrays.toString(pesas));					
 				}
+				if(mensaje.startsWith("nuevoPeso")){
+					crearNuevo = true;
+					System.out.println("nuevoPeso: " +nuevoPeso);
+				}
 				
 			}
 		}
@@ -44,6 +49,9 @@ public class Comunicacion {
 	}
 	public Boolean getCrearNuevo(){
 		return crearNuevo;
+	}
+	public Boolean getNuevoPeso(){
+		return nuevoPeso;
 	}
 	public void setCrearNuevo(Boolean b){
 		crearNuevo = b;

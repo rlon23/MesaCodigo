@@ -1,22 +1,22 @@
 package diazPallares;
 
 public class Alimento {
-	private int peso, tipo, calorias;
+	private int tipo;
+	private float pesoInicial, pesoFinal, peso, calorias;
 	public Alimento(int n) {
 		calorias = 0;
+		pesoInicial =0;
+		peso = 0;
+		pesoFinal = 0;
 	}
-	public void Ejecutar(String p){
-		if(p != null){
-			peso = Integer.parseInt(p);
-		}
+	public void ejecutar(String p){
+		peso = Float.parseFloat(p);
+		pesoFinal = pesoInicial-peso;
+		System.out.println("pesoInicial: "+pesoInicial);
 		switch(tipo){
-		case 0:
-			//arroz
-			calorias = (int) (peso*1.5);
-			//calcula caloria de acuerdo al peso y tipo de alimento.
-			break;
 		case 1:
-			//
+			//arroz
+			calorias = (float) (peso*1.5);
 			//calcula caloria de acuerdo al peso y tipo de alimento.
 			break;
 		case 2:
@@ -27,15 +27,24 @@ public class Alimento {
 			//
 			//calcula caloria de acuerdo al peso y tipo de alimento.
 			break;
-			
+		case 4:
+			//
+			//calcula caloria de acuerdo al peso y tipo de alimento.
+			break;
+		case 5:
+			//
+			//calcula caloria de acuerdo al peso y tipo de alimento.
+			break;			
 		}
 	}
-	public int getCalorias(){
+	public float getCalorias(){
 		return calorias;
 	}
-	public int getPeso(){
-		return peso;
+	public void setPesoInicial(String pI){
+		pesoInicial = Float.parseFloat(pI);
 	}
-	
+	public float getPesoF(){
+		return pesoFinal;
+	}
 
 }

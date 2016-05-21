@@ -12,7 +12,7 @@ public class Ejecutable extends PApplet{
 	}
 	public void draw(){
 		background(69);
-		logica.draw();
+		logica.ejecutar();
 	}
 	public void mousePressed(){
 		logica.mousePressed(mouseX, mouseY);
