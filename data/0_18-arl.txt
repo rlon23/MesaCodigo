@@ -1,0 +1,10 @@
+usuario: arl
+hora: 0-18
+pesoTotal: -3.0
+pollo: 1.0g cal: 1.34
+papa: 0.0g cal: 0.0
+ensalada: 0.0g cal: 0.0
+lenteja: -4.0g cal: -13.44
+arroz: 0.0g cal: 0.0
+caloriasTotal: -12.099999
+pesoEnPlato 0.0

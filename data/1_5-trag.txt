@@ -1,0 +1,10 @@
+usuario: trag
+hora: 1-5
+pesoTotal: 88.0
+pollo: 35.0g cal: 46.9
+papa: 23.0g cal: 34.5
+ensalada: 13.0g cal: 11.31
+lenteja: 5.0g cal: 16.8
+arroz: 12.0g cal: 42.48
+caloriasTotal: 151.98999
+pesoEnPlato 82.0

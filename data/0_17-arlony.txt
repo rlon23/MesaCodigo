@@ -1,0 +1,16 @@
+usuario: arlony
+hora: 0-17
+pesoTotal: 1.0
+pollo: 0.0g cal: 0.0
+papa: 1.0g cal: 1.5
+ensalada: 0.0g cal: 0.0
+lenteja: 0.0g cal: 0.0
+arroz: -0.0g cal: -0.0
+caloriasTotal: 1.5
+pesoEnPlato 0.0
+null
+null
+null
+null
+null
+null

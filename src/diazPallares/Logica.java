@@ -15,7 +15,7 @@ public class Logica {
 		app = p;
 		com = new Comunicacion(app);
 		interfaz = new Interfaz(app);
-		pesas = new String[7];
+		pesas = new String[6];
 	}
 
 	public void ejecutar() {
@@ -37,6 +37,11 @@ public class Logica {
 	}
 
 	public void mousePressed(int mouseX, int mouseY) {
-		escena++;		
+		if(escena==0 && interfaz.usuario()){
+			escena = 1;
+		}	
+		if(escena == 1){
+			interfaz.guardarInfo();
+		}
 	}
 }

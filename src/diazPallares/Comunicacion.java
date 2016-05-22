@@ -12,9 +12,9 @@ public class Comunicacion {
 	private String pesas[];
 	public Comunicacion(PApplet app){
 		this.app = app;
-		pesas = new String[7];
+		pesas = new String[6];
 		String nombrePuerto = Serial.list()[1];
-		puerto = new Serial(this.app, nombrePuerto, 9600);
+		puerto = new Serial(this.app, nombrePuerto, 19200);
 		crearNuevo = false;
 		nuevoPeso = false;
 	}
@@ -30,9 +30,15 @@ public class Comunicacion {
 				if(mensaje.startsWith("pesas")){
 					String[] partes = PApplet.split(mensaje, " ");
 					//System.out.println(Arrays.toString(pesas));
-					for(int i=0; i< partes.length-1; i++){
+					pesas[0]=partes[1];
+					pesas[1]=partes[2];
+					pesas[2]=partes[3];
+					pesas[3]=partes[4];
+					pesas[4]=partes[5];
+					pesas[5]=partes[6];
+					/*for(int i=0; i< partes.length-1; i++){
 						pesas[i] = partes[i+1];
-					}
+					}*/
 					System.out.println("Pesas" + Arrays.toString(pesas));					
 				}
 				if(mensaje.startsWith("nuevoPeso")){
