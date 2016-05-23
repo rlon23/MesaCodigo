@@ -35,13 +35,20 @@ public class Logica {
 			//asigna el peso en los sensores al valor pesoInicial de Alimentos.
 		}
 	}
+	public void nuevoUsuario(){
+		interfaz.reiniciar();
+		escena = 0;
+	}
 
 	public void mousePressed(int mouseX, int mouseY) {
-		if(escena==0 && interfaz.usuario()){
+		if(mouseX>605 && mouseX<675 && mouseY>540 && mouseY<610 && escena==0 && interfaz.usuario()){
 			escena = 1;
 		}	
-		if(escena == 1){
+		if(mouseX>1139 && mouseX<1219 && mouseY>60 && mouseY<140 && escena == 1){
 			interfaz.guardarInfo();
+		}
+		if(mouseX>1139 && mouseX<1219 && mouseY>163 && mouseY<253 && escena == 1){
+			nuevoUsuario();
 		}
 	}
 }

@@ -1,10 +1,10 @@
-usuario: arlony4
-hora: 0-37
-pesoTotal: 0.0
-pollo: 0.0g cal: 0.0
+usuario: arlonyt
+hora: 11-20
+pesoTotal: 183.0
+pollo: 183.0g cal: 245.22
 papa: 0.0g cal: 0.0
 ensalada: 0.0g cal: 0.0
 lenteja: 0.0g cal: 0.0
 arroz: 0.0g cal: 0.0
-caloriasTotal: 0.0
+caloriasTotal: 245.22
 pesoEnPlato 0.0

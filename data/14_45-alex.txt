@@ -1,0 +1,10 @@
+usuario: alex
+hora: 14-45
+pesoTotal: 359.0
+pollo: 69.0g cal: 92.46
+papa: 67.0g cal: 100.5
+ensalada: 78.0g cal: 67.86
+lenteja: 90.0g cal: 302.4
+arroz: 55.0g cal: 194.7
+caloriasTotal: 757.92
+pesoEnPlato 626.0

@@ -2,7 +2,7 @@ package diazPallares;
 
 import processing.core.PApplet;
 
-public class Alimento {
+public class Alimento {//CARTON REVERSO BLANCO
 	private PApplet app;
 	private int tipo;
 	private float pesoInicial, pesoFinal, peso, cal;
@@ -25,7 +25,7 @@ public class Alimento {
 			cal = pesoFinal*1.34f;
 			//poner condiciones de calorias
 			if(cal<70f){
-				app.fill(255,221,0);
+				app.fill(255);
 			}
 			if(cal>70f && cal<167.5f){
 				app.fill(0,175,100);
@@ -40,6 +40,10 @@ public class Alimento {
 			//amarillo app.fill(255,221,0);
 			//rojo app.fill(213,25,32);
 			app.ellipse(325, 368, 177, 177);
+			app.textSize(36);
+			app.fill(33);
+			app.text(pesoFinal+"g", 273, 360);
+			app.text((int)cal+" cal", 273, 400);
 			
 			break;
 		case 2:
@@ -47,7 +51,7 @@ public class Alimento {
 			cal = pesoFinal*1.5f;
 			//poner condiciones de calorias
 			if(cal<90f){
-				app.fill(255,221,0);
+				app.fill(255);
 			}
 			if(cal>90f && cal<180f){
 				app.fill(255,221,0);
@@ -56,13 +60,17 @@ public class Alimento {
 				app.fill(213,25,32);
 			}
 			app.ellipse(446, 202, 177, 177);
+			app.textSize(36);
+			app.fill(33);
+			app.text(pesoFinal+"g", 403, 190);
+			app.text((int)cal+" cal", 403, 230);
 			break;
 		case 3:
 			//ensalada 0.87 caloria x gramo
 			cal = pesoFinal*0.87f;
 			//poner condiciones de calorias
 			if(cal<59.3f){
-				app.fill(255,221,0);
+				app.fill(255);
 			}
 			if(cal>59.3f && cal<130f){
 				app.fill(0,175,100);
@@ -74,13 +82,17 @@ public class Alimento {
 				app.fill(213,25,32);
 			}
 			app.ellipse(640, 138, 177, 177);
+			app.textSize(36);
+			app.fill(33);
+			app.text(pesoFinal+"g", 592, 132);
+			app.text((int)cal+" cal", 592, 172);
 			break;
 		case 4:
 			//lenteja 3.36 caloria x gramo
 			cal = pesoFinal*3.36f;
 			//poner condiciones de calorias
 			if(cal<150f){
-				app.fill(255,221,0);
+				app.fill(255);
 			}
 			if(cal>150f && cal<201f){
 				app.fill(0,175,100);
@@ -92,25 +104,32 @@ public class Alimento {
 				app.fill(213,25,32);
 			}
 			app.ellipse(831, 202, 177, 177);
+			app.textSize(36);
+			app.fill(33);
+			app.text(pesoFinal+"g", 790, 190);
+			app.text((int)cal+" cal", 790, 230);
 			break;
 		case 5:
 			//arroz 3.54 caloria x gramo
 			cal = pesoFinal*3.54f;
 			//poner condiciones de calorias
 			if(cal<30f){
-				app.fill(255,221,0);
+				app.fill(255);
 			}
 			if(cal>30f && cal<70f){
 				app.fill(0,175,100);
 			}
-			if(cal>70f && cal<100f){
+			if(cal>70f && cal<140f){
 				app.fill(255,221,0);
 			}
-			if(cal>100f){
+			if(cal>140f){
 				app.fill(213,25,32);
 			}
 			app.ellipse(953, 368, 177, 177);
-			
+			app.textSize(36);
+			app.fill(33);
+			app.text(pesoFinal+"g", 910, 360);
+			app.text((int)cal+" cal", 910, 400);
 			break;			
 		}
 	}

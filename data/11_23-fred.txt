@@ -1,0 +1,10 @@
+usuario: fred
+hora: 11-23
+pesoTotal: 109.0
+pollo: 109.0g cal: 146.06
+papa: 0.0g cal: 0.0
+ensalada: 0.0g cal: 0.0
+lenteja: 0.0g cal: 0.0
+arroz: 0.0g cal: 0.0
+caloriasTotal: 146.06
+pesoEnPlato 0.0

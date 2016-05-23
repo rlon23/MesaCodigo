@@ -111,8 +111,10 @@ public class Interfaz {
 		guardar[9]="pesoEnPlato "+plato;
 		app.saveStrings("../data/"+hora+"-"+usuario+".txt", guardar);
 	}
-	public void setInicial(boolean b){
-		inicial=b;
+	public void reiniciar(){
+		inicial=true;
+		cp5.get(Textfield.class,"usuario").clear();
+		cp5.get(Textfield.class,"usuario").show();
 	}
 	public boolean usuario(){
 		usuario=cp5.get(Textfield.class,"usuario").getText();
