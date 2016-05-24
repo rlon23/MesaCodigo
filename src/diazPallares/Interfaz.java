@@ -16,8 +16,8 @@ public class Interfaz {
 	private Alimento aUno, aDos, aTres, aCuatro, aCinco;
 	private boolean inicial;
 	private ControlP5 cp5;
-	private PFont font;
-	private PImage fondoUno, fondoDos;
+	private PFont fuente;
+	private PImage fondoUno, fondoDos, instrucciones;
 	private String usuario;
 
 	public Interfaz(PApplet app) {
@@ -41,21 +41,22 @@ public class Interfaz {
 		guardar = new String[10];
 		fondoUno = app.loadImage("../data/fondoUno.png");
 		fondoDos = app.loadImage("../data/fondoDos.png");
-		font = app.createFont("arial", 48);
+		instrucciones = app.loadImage("../data/instrucciones.png");
+		fuente = app.loadFont("../data/MyriadPB.vlw");
 		cp5 = new ControlP5(app);
-		cp5.addTextfield("usuario").setPosition(660, 642).setSize(600, 60)
-				.setFocus(true).setFont(font).setCaptionLabel("")
-				.setColor(app.color(0)).setColorBackground(app.color(200))
+		cp5.addTextfield("usuario").setPosition(660, 632).setSize(600, 60)
+				.setFocus(true).setFont(fuente).setColor(app.color(0)).setColorBackground(app.color(200))
 				.setAutoClear(false);
 	}
 
-	public void Ejecutar(String[] pesos, int escena) {
-		this.escena = escena;
+	public void Ejecutar(String[] pesos) {
 		switch (this.escena) {
 		case 0:
 			app.image(fondoUno, 0, 0);
 			break;
 		case 1:
+			app.image(instrucciones, 0,0);
+			cp5.get("usuario").hide();
 			break;
 		case 2:
 			app.image(fondoDos, 0, 0);
@@ -128,6 +129,7 @@ public class Interfaz {
 	}
 
 	public void reiniciar() {
+		escena = 0;
 		inicial = true;
 		cp5.get(Textfield.class, "usuario").clear().show().setFocus(true);
 	}
@@ -151,7 +153,7 @@ public class Interfaz {
 		for (int i = 0; i < angles.length; i++) {
 			app.noStroke();
 			app.fill(colores[i]);
-			app.arc(960, 649, 300, 300, lastAngle,
+			app.arc(960, 649, 350, 350, lastAngle,
 					lastAngle + PApplet.radians(angles[i]), PConstants.PIE);
 			lastAngle += PApplet.radians(angles[i]);
 		}
@@ -159,10 +161,6 @@ public class Interfaz {
 
 	public void barraCal() {
 		float tamX = PApplet.map(totalCalorias, 0, 800, 0, 444);
-		//int tamX=444;
-		//verde app.fill(0,175,100);
-		//amarillo app.fill(255,221,0);
-		//rojo app.fill(213,25,32);
 		if (tamX < 400) {
 			app.fill(255,221,0);
 		}
@@ -173,8 +171,30 @@ public class Interfaz {
 			app.fill(213,25,32);
 		}		
 		app.fill(0);
-		app.rect(737, 909, tamX, 56, 10);
-		app.text((int)totalCalorias, 907, 898);
+		app.rect(737, 873, tamX, 56, 10);
+		app.text((int)totalCalorias, 907, 865);
+	}
+	public void mousePressed(int mouseX, int mouseY){
+		switch(escena){
+		case 0:
+			if(mouseX>910 && mouseX<1010 && mouseY>753 && mouseY<853 && usuario()){
+				escena = 1;
+			}
+			break;
+		case 1:
+			if(mouseX>910 && mouseX<1010 && mouseY>753 && mouseY<853){
+				escena = 2;
+			}
+			break;
+		case 2:
+			if(mouseX>1810 && mouseX<1885 && mouseY>35 && mouseY<110){
+				guardarInfo();
+			}
+			if(mouseX>1810 && mouseX<1885 && mouseY>141 && mouseY<215){
+				reiniciar();
+			}
+			break;				
+		}		
 	}
 
 }

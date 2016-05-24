@@ -43,9 +43,6 @@ public class Alimento {//CARTON REVERSO BLANCO
 			if(cal>183.7f){
 				app.fill(rojo);
 			}
-			//verde app.fill(0,175,100);
-			//amarillo app.fill(255,221,0);
-			//rojo app.fill(213,25,32);
 			app.ellipse(645, 548, 177, 177);
 			app.textFont(fuente,24);
 			app.fill(33);
