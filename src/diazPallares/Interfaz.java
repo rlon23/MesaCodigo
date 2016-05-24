@@ -10,7 +10,8 @@ import processing.core.PImage;
 public class Interfaz {
 	private PApplet app;
 	private int escena;
-	private float pUno, pDos, pTres, pCuatro, pCinco, plato, totalGramos, totalCalorias;
+	private float pUno, pDos, pTres, pCuatro, pCinco, plato, totalGramos,
+			totalCalorias;
 	private String guardar[];
 	private Alimento aUno, aDos, aTres, aCuatro, aCinco;
 	private boolean inicial;
@@ -18,17 +19,18 @@ public class Interfaz {
 	private PFont font;
 	private PImage fondoUno, fondoDos;
 	private String usuario;
+
 	public Interfaz(PApplet app) {
 		this.app = app;
 		escena = 0;
 		totalGramos = 0f;
 		totalCalorias = 0f;
 		inicial = true;
-		aUno = new Alimento(this.app,1);
-		aDos = new Alimento(this.app,2);
-		aTres = new Alimento(this.app,3);
-		aCuatro = new Alimento(this.app,4);
-		aCinco = new Alimento(this.app,5);
+		aUno = new Alimento(this.app, 1);
+		aDos = new Alimento(this.app, 2);
+		aTres = new Alimento(this.app, 3);
+		aCuatro = new Alimento(this.app, 4);
+		aCinco = new Alimento(this.app, 5);
 		pUno = 0;
 		pDos = 0;
 		pTres = 0;
@@ -41,35 +43,32 @@ public class Interfaz {
 		fondoDos = app.loadImage("../data/fondoDos.png");
 		font = app.createFont("arial", 48);
 		cp5 = new ControlP5(app);
-		cp5.addTextfield("usuario")
-		.setPosition(340, 449)
-		.setSize(600,60)
-		.setFocus(true)
-		.setFont(font)
-		.setCaptionLabel("")
-		.setColor(app.color(0))
-		.setColorBackground(app.color(200))
-		.setAutoClear(false)
-		;
+		cp5.addTextfield("usuario").setPosition(660, 642).setSize(600, 60)
+				.setFocus(true).setFont(font).setCaptionLabel("")
+				.setColor(app.color(0)).setColorBackground(app.color(200))
+				.setAutoClear(false);
 	}
 
 	public void Ejecutar(String[] pesos, int escena) {
 		this.escena = escena;
 		switch (this.escena) {
 		case 0:
-			app.image(fondoUno,0,0);
+			app.image(fondoUno, 0, 0);
 			break;
 		case 1:
-			app.image(fondoDos,0,0);
+			break;
+		case 2:
+			app.image(fondoDos, 0, 0);
 			cp5.get("usuario").hide();
 			calcularPorcentajes(pesos);
 			break;
 		}
 	}
+
 	public void calcularPorcentajes(String[] pesos) {
-		
+
 		if (pesos[0] != null) {
-			if(inicial==true){//guarda el peso inicial
+			if (inicial == true) {// guarda el peso inicial
 				aUno.setPesoInicial(pesos[0]);
 				aDos.setPesoInicial(pesos[1]);
 				aTres.setPesoInicial(pesos[2]);
@@ -82,59 +81,100 @@ public class Interfaz {
 			aTres.ejecutar(pesos[2]);
 			aCuatro.ejecutar(pesos[3]);
 			aCinco.ejecutar(pesos[4]);
-			totalGramos = aUno.getPesoF()+aDos.getPesoF()+aTres.getPesoF()+aCuatro.getPesoF()+aCinco.getPesoF();
+			totalGramos = aUno.getPesoF() + aDos.getPesoF() + aTres.getPesoF()
+					+ aCuatro.getPesoF() + aCinco.getPesoF();
 		}
 
 		plato = Float.parseFloat(pesos[5]);
-		totalCalorias = aUno.getCalorias()+aDos.getCalorias()+aTres.getCalorias()+aCuatro.getCalorias()+aCinco.getCalorias();
-		//valores para torta
-		pUno = PApplet.map(PApplet.abs(aUno.getCalorias()), 0, totalCalorias, 0, 360);
-		pDos = PApplet.map(PApplet.abs(aDos.getCalorias()), 0, totalCalorias, 0, 360);
-		pTres = PApplet.map(PApplet.abs(aTres.getCalorias()), 0, totalCalorias, 0, 360);
-		pCuatro = PApplet.map(PApplet.abs(aCuatro.getCalorias()), 0, totalCalorias, 0, 360);
-		pCinco = PApplet.map(PApplet.abs(aCinco.getCalorias()), 0, totalCalorias, 0, 360);
+		totalCalorias = aUno.getCalorias() + aDos.getCalorias()
+				+ aTres.getCalorias() + aCuatro.getCalorias()
+				+ aCinco.getCalorias();
+		// valores para torta
+		pUno = PApplet.map(PApplet.abs(aUno.getCalorias()), 0, totalCalorias,
+				0, 360);
+		pDos = PApplet.map(PApplet.abs(aDos.getCalorias()), 0, totalCalorias,
+				0, 360);
+		pTres = PApplet.map(PApplet.abs(aTres.getCalorias()), 0, totalCalorias,
+				0, 360);
+		pCuatro = PApplet.map(PApplet.abs(aCuatro.getCalorias()), 0,
+				totalCalorias, 0, 360);
+		pCinco = PApplet.map(PApplet.abs(aCinco.getCalorias()), 0,
+				totalCalorias, 0, 360);
 		torta();
+		barraCal();
 
-	}	
+	}
+
 	public void guardarInfo() {
-		//guardar valores en txt.
-		String hora=PApplet.hour()+"_"+PApplet.minute();		
-		guardar[0]="usuario: "+usuario;
-		guardar[1]="hora: "+PApplet.hour()+"-"+PApplet.minute();
-		guardar[2]="pesoTotal: "+totalGramos;
-		guardar[3]="pollo: "+aUno.getPesoF()+"g cal: "+aUno.getCalorias();
-		guardar[4]="papa: "+aDos.getPesoF()+"g cal: "+aDos.getCalorias();
-		guardar[5]="ensalada: "+aTres.getPesoF()+"g cal: "+aTres.getCalorias();
-		guardar[6]="lenteja: "+aCuatro.getPesoF()+"g cal: "+aCuatro.getCalorias();;
-		guardar[7]="arroz: "+aCinco.getPesoF()+"g cal: "+aCinco.getCalorias();
-		guardar[8]="caloriasTotal: "+totalCalorias;
-		guardar[9]="pesoEnPlato "+plato;
-		app.saveStrings("../data/"+hora+"-"+usuario+".txt", guardar);
+		// guardar valores en txt.
+		String hora = PApplet.hour() + "_" + PApplet.minute();
+		guardar[0] = "usuario: " + usuario;
+		guardar[1] = "hora: " + PApplet.hour() + "-" + PApplet.minute();
+		guardar[2] = "pesoTotal: " + totalGramos;
+		guardar[3] = "pollo: " + aUno.getPesoF() + "g cal: "
+				+ aUno.getCalorias();
+		guardar[4] = "papa: " + aDos.getPesoF() + "g cal: "
+				+ aDos.getCalorias();
+		guardar[5] = "ensalada: " + aTres.getPesoF() + "g cal: "
+				+ aTres.getCalorias();
+		guardar[6] = "lenteja: " + aCuatro.getPesoF() + "g cal: "
+				+ aCuatro.getCalorias();
+		;
+		guardar[7] = "arroz: " + aCinco.getPesoF() + "g cal: "
+				+ aCinco.getCalorias();
+		guardar[8] = "caloriasTotal: " + totalCalorias;
+		guardar[9] = "pesoEnPlato " + plato;
+		app.saveStrings("../data/" + hora + "-" + usuario + ".txt", guardar);
 	}
-	public void reiniciar(){
-		inicial=true;
-		cp5.get(Textfield.class,"usuario").clear();
-		cp5.get(Textfield.class,"usuario").show();
+
+	public void reiniciar() {
+		inicial = true;
+		cp5.get(Textfield.class, "usuario").clear().show().setFocus(true);
 	}
-	public boolean usuario(){
-		usuario=cp5.get(Textfield.class,"usuario").getText();
-		if(!usuario.isEmpty()){
+
+	public boolean usuario() {
+		usuario = cp5.get(Textfield.class, "usuario").getText();
+		if (!usuario.isEmpty()) {
 			return true;
 		}
 		return false;
 	}
+
 	public void torta() {
-		int[] colores = { app.color(224, 80, 76), app.color(235, 111, 36), app.color(30, 101, 80), app.color(107, 75, 44),	app.color(251, 227, 169)};
-		// int[] angles = {30, 10, 45, 35, 60, 38, 75, 67 };
+		int[] colores = { app.color(224, 80, 76), app.color(204, 174, 106),
+				app.color(96, 166, 46), app.color(107, 75, 44),
+				app.color(251, 227, 169) };
+		//int[] angles = {72,72,72,72,72 };
 		float[] angles = { pUno, pDos, pTres, pCuatro, pCinco };
 		// System.out.println(Arrays.toString(angles));
 		float lastAngle = 0;
 		for (int i = 0; i < angles.length; i++) {
 			app.noStroke();
 			app.fill(colores[i]);
-			app.arc(640, 468, 445, 445, lastAngle, lastAngle + PApplet.radians(angles[i]), PConstants.PIE);
+			app.arc(960, 649, 300, 300, lastAngle,
+					lastAngle + PApplet.radians(angles[i]), PConstants.PIE);
 			lastAngle += PApplet.radians(angles[i]);
 		}
+	}
+
+	public void barraCal() {
+		float tamX = PApplet.map(totalCalorias, 0, 800, 0, 444);
+		//int tamX=444;
+		//verde app.fill(0,175,100);
+		//amarillo app.fill(255,221,0);
+		//rojo app.fill(213,25,32);
+		if (tamX < 400) {
+			app.fill(255,221,0);
+		}
+		if (tamX > 400 && tamX <700) {
+			app.fill(0,175,100);
+		}
+		if(tamX > 790){
+			app.fill(213,25,32);
+		}		
+		app.fill(0);
+		app.rect(737, 909, tamX, 56, 10);
+		app.text((int)totalCalorias, 907, 898);
 	}
 
 }

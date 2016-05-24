@@ -41,13 +41,16 @@ public class Logica {
 	}
 
 	public void mousePressed(int mouseX, int mouseY) {
-		if(mouseX>605 && mouseX<675 && mouseY>540 && mouseY<610 && escena==0 && interfaz.usuario()){
+		if(mouseX>910 && mouseX<1010 && mouseY>753 && mouseY<853 && escena==0 && interfaz.usuario()){
 			escena = 1;
-		}	
-		if(mouseX>1139 && mouseX<1219 && mouseY>60 && mouseY<140 && escena == 1){
+		}
+		if(mouseX>910 && mouseX<1010 && mouseY>753 && mouseY<853 && escena==0 && interfaz.usuario()){
+			escena = 2;
+		}
+		if(mouseX>1810 && mouseX<1885 && mouseY>35 && mouseY<110 && escena == 2){
 			interfaz.guardarInfo();
 		}
-		if(mouseX>1139 && mouseX<1219 && mouseY>163 && mouseY<253 && escena == 1){
+		if(mouseX>1810 && mouseX<1885 && mouseY>141 && mouseY<215 && escena == 2){
 			nuevoUsuario();
 		}
 	}

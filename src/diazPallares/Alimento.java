@@ -1,18 +1,25 @@
 package diazPallares;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 
 public class Alimento {//CARTON REVERSO BLANCO
 	private PApplet app;
 	private int tipo;
 	private float pesoInicial, pesoFinal, peso, cal;
+	private int amarillo, verde, rojo;
+	private PFont fuente;
 	public Alimento(PApplet app,int n) {
+		fuente = app.loadFont("../data/MyriadPB.vlw");
 		this.app = app;
 		cal = 0;
 		pesoInicial =0;
 		peso = 0;
 		pesoFinal = 0;
 		tipo=n;
+		amarillo = app.color(255,221,0);
+		verde = app.color(0,175,100);
+		rojo = app.color(213,25,32);
 	}
 	public void ejecutar(String p){
 		peso = Float.parseFloat(p);
@@ -24,112 +31,111 @@ public class Alimento {//CARTON REVERSO BLANCO
 			//calcula caloria de acuerdo al peso y tipo de alimento.
 			cal = pesoFinal*1.34f;
 			//poner condiciones de calorias
-			if(cal<70f){
+			if(cal<91.8f){
 				app.fill(255);
 			}
-			if(cal>70f && cal<167.5f){
-				app.fill(0,175,100);
+			if(cal>91.8f && cal<160.8f){
+				app.fill(amarillo);
 			}
-			if(cal>167.5f && cal<210f){
-				app.fill(255,221,0);
+			if(cal>160.8f && cal<183.7f){
+				app.fill(verde);
 			}
-			if(cal>210f){
-				app.fill(213,25,32);
+			if(cal>183.7f){
+				app.fill(rojo);
 			}
 			//verde app.fill(0,175,100);
 			//amarillo app.fill(255,221,0);
 			//rojo app.fill(213,25,32);
-			app.ellipse(325, 368, 177, 177);
-			app.textSize(36);
+			app.ellipse(645, 548, 177, 177);
+			app.textFont(fuente,24);
 			app.fill(33);
-			app.text(pesoFinal+"g", 273, 360);
-			app.text((int)cal+" cal", 273, 400);
+			app.text(pesoFinal+"g", 617, 545);
+			app.text((int)cal+" cal", 606, 578);
 			
 			break;
 		case 2:
 			//papa 1.5caloria x gramo
 			cal = pesoFinal*1.5f;
 			//poner condiciones de calorias
-			if(cal<90f){
+			if(cal<60f){
 				app.fill(255);
 			}
-			if(cal>90f && cal<180f){
-				app.fill(255,221,0);
+			if(cal>60f && cal<105f){
+				app.fill(amarillo);
 			}
-			if(cal>180f){
-				app.fill(213,25,32);
+			if(cal>105f && cal<120f){
+				app.fill(verde);
 			}
-			app.ellipse(446, 202, 177, 177);
-			app.textSize(36);
+			if(cal>120f){
+				app.fill(rojo);
+			}
+			app.ellipse(766, 382, 177, 177);
 			app.fill(33);
-			app.text(pesoFinal+"g", 403, 190);
-			app.text((int)cal+" cal", 403, 230);
+			app.text(pesoFinal+"g", 737, 379);
+			app.text((int)cal+" cal", 727, 412);
 			break;
 		case 3:
 			//ensalada 0.87 caloria x gramo
 			cal = pesoFinal*0.87f;
 			//poner condiciones de calorias
-			if(cal<59.3f){
+			if(cal<69.6f){
 				app.fill(255);
 			}
-			if(cal>59.3f && cal<130f){
-				app.fill(0,175,100);
+			if(cal>69.6f && cal<121.8f){
+				app.fill(amarillo);
 			}
-			if(cal>130f && cal<240f){
-				app.fill(255,221,0);
+			if(cal>121.8f && cal<139.2f){
+				app.fill(verde);
 			}
-			if(cal>240f){
-				app.fill(213,25,32);
+			if(cal>139.2f){
+				app.fill(rojo);
 			}
-			app.ellipse(640, 138, 177, 177);
-			app.textSize(36);
+			app.ellipse(960, 318, 177, 177);
 			app.fill(33);
-			app.text(pesoFinal+"g", 592, 132);
-			app.text((int)cal+" cal", 592, 172);
+			app.text(pesoFinal+"g", 931, 315);
+			app.text((int)cal+" cal", 921, 348);
 			break;
 		case 4:
 			//lenteja 3.36 caloria x gramo
 			cal = pesoFinal*3.36f;
 			//poner condiciones de calorias
-			if(cal<150f){
+			if(cal<134.4f){
 				app.fill(255);
 			}
-			if(cal>150f && cal<201f){
-				app.fill(0,175,100);
+			if(cal>134.4f && cal<235.2f){
+				app.fill(amarillo);				
 			}
-			if(cal>201f && cal<300f){
-				app.fill(255,221,0);
+			if(cal>235.2f && cal<268.8f){
+				app.fill(verde);
 			}
-			if(cal>300f){
-				app.fill(213,25,32);
+			if(cal>268.8f){
+				app.fill(rojo);
 			}
-			app.ellipse(831, 202, 177, 177);
-			app.textSize(36);
+			app.ellipse(1151, 382, 177, 177);
 			app.fill(33);
-			app.text(pesoFinal+"g", 790, 190);
-			app.text((int)cal+" cal", 790, 230);
+			app.text(pesoFinal+"g", 1122, 379);
+			app.text((int)cal+" cal", 1112, 412);
 			break;
 		case 5:
-			//arroz 3.54 caloria x gramo
-			cal = pesoFinal*3.54f;
+			//arroz 1.3 caloria x gramo
+			cal = pesoFinal*1.3f;
 			//poner condiciones de calorias
-			if(cal<30f){
+			if(cal<44.57f){
 				app.fill(255);
 			}
-			if(cal>30f && cal<70f){
-				app.fill(0,175,100);
+			if(cal>44.57f && cal<78f){
+				app.fill(amarillo);
 			}
-			if(cal>70f && cal<140f){
-				app.fill(255,221,0);
+			if(cal>78f && cal<89.14f){
+				app.fill(verde);
 			}
-			if(cal>140f){
-				app.fill(213,25,32);
+			if(cal>89.14f){
+				app.fill(rojo);
 			}
-			app.ellipse(953, 368, 177, 177);
-			app.textSize(36);
+			app.ellipse(1273, 548, 177, 177);
 			app.fill(33);
-			app.text(pesoFinal+"g", 910, 360);
-			app.text((int)cal+" cal", 910, 400);
+			app.text(pesoFinal+"g", 1244, 545);
+			app.text((int)cal+" cal", 1234, 578);
 			break;			
 		}
 	}

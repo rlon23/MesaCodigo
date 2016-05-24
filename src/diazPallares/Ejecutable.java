@@ -6,12 +6,12 @@ import processing.core.PApplet;
 public class Ejecutable extends PApplet{
 	private Logica logica;
 	public void setup(){
-		size(1280, 720);
+		size(1920, 1080);
 		logica = new Logica(this);
 		
 	}
 	public void draw(){
-		background(69);
+		background(255);
 		logica.ejecutar();
 	}
 	public void mousePressed(){
