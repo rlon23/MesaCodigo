@@ -160,18 +160,20 @@ public class Interfaz {
 	}
 
 	public void barraCal() {
-		float tamX = PApplet.map(totalCalorias, 0, 800, 0, 444);
-		if (tamX < 400) {
+		float rango = PApplet.constrain(totalCalorias, 0, 800);
+		float tamX = PApplet.map(rango, 0, 800, 0, 444);
+		
+		if (rango < 400) {
 			app.fill(255,221,0);
 		}
-		if (tamX > 400 && tamX <700) {
+		if (rango > 400 && rango <700) {
 			app.fill(0,175,100);
 		}
-		if(tamX > 790){
+		if(rango > 700){
 			app.fill(213,25,32);
-		}		
-		app.fill(0);
+		}	
 		app.rect(737, 873, tamX, 56, 10);
+		app.fill(0);		
 		app.text((int)totalCalorias, 907, 865);
 	}
 	public void mousePressed(int mouseX, int mouseY){
